@@ -1,0 +1,18 @@
+RisenMP prototype v0.1
+
+Console command:
+  risenmp
+
+Commands:
+  risenmp host [port]
+  risenmp join <IPv4> [port]
+  risenmp status
+  risenmp stop
+
+Default UDP port: 28000
+Maximum players: 4 (host included)
+Transport: UDP, host-based session
+Current scope: LAN handshake and keep-alive only.
+
+This prototype does not yet create remote player entities or synchronize
+movement, animation, combat, NPCs, inventory, or world state.
