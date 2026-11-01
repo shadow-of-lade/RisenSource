@@ -124,7 +124,8 @@ BOOL APIENTRY DllMain(HMODULE Module, DWORD Reason, LPVOID)
 {
     if (Reason == DLL_PROCESS_ATTACH)
         DisableThreadLibraryCalls(Module);
-    else if (Reason == DLL_PROCESS_DETACH)
-        RisenMP::Stop();
+
+    // Do not wait for the network thread under the Windows loader lock.
+    // Stop networking explicitly with "risenmp stop".
     return TRUE;
 }
