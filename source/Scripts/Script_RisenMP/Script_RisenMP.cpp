@@ -40,7 +40,7 @@ GEInt GE_STDCALL CON_risenmp(gCScriptProcessingUnit *, GELPVoid, GELPVoid, GEInt
             {
                 GEInt Port = RisenMP::DefaultPort;
                 if (Count >= 2)
-                    Port = Args.m_arrParams.GetAt(1).GetInteger();
+                    Port = static_cast<GEInt>(Args.m_arrParams.GetAt(1).GetDouble(0));
 
                 if (Port < 1 || Port > 65535)
                 {
@@ -70,7 +70,7 @@ GEInt GE_STDCALL CON_risenmp(gCScriptProcessingUnit *, GELPVoid, GELPVoid, GEInt
                 Address = Args.m_arrParams.GetAt(1);
                 AnsiAddress = Address.GetAnsiText();
                 if (Count >= 3)
-                    Port = Args.m_arrParams.GetAt(2).GetInteger();
+                    Port = static_cast<GEInt>(Args.m_arrParams.GetAt(2).GetDouble(0));
 
                 if (Port < 1 || Port > 65535)
                 {
@@ -88,7 +88,7 @@ GEInt GE_STDCALL CON_risenmp(gCScriptProcessingUnit *, GELPVoid, GELPVoid, GEInt
             if (Command.CompareNoCase(L"status") == 0)
             {
                 RisenMP::GetStatus(Status, sizeof(Status));
-                Args.m_strResult = bCUnicodeString(Status);
+                Args.m_strResult = bCString(Status).GetUnicodeText();
                 return GETrue;
             }
 
